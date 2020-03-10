@@ -3,6 +3,8 @@
 DROP TABLE users;
 DROP TABLE role;
 DROP TABLE users_role;
+DROP TABLE person;
+DROP TABLE logins;
 */
 --CREATE DATABASE db_users WITH OWNER = postgres ENCODING = 'UTF8' template=template0;
 
@@ -40,4 +42,59 @@ CREATE TABLE users_role
   CONSTRAINT users_role_role_id_fkey FOREIGN KEY (role_id)
       REFERENCES role (id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION  
+);
+
+CREATE TABLE person
+(
+    id bigint NOT NULL,
+    address character varying(255),
+    country character varying(255),
+    dateofbirth timestamp without time zone,
+    dateofinsert timestamp without time zone,
+    lastupdate timestamp without time zone,
+    name character varying(255),
+    phone character varying(255),
+    status integer,
+    surname character varying(255),
+    town character varying(255),
+    CONSTRAINT person_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE logins
+(
+    id bigint NOT NULL,
+    browser character varying(255),
+    dateofinsert timestamp without time zone,
+    ip character varying(255),
+    success integer,
+    users_id bigint,
+    CONSTRAINT logins_pkey PRIMARY KEY (id),
+    CONSTRAINT logins_users_id FOREIGN KEY (users_id)
+        REFERENCES users (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+
+CREATE TABLE revinfo
+(
+    rev integer NOT NULL,
+    revtstmp bigint,
+    CONSTRAINT revinfo_pkey PRIMARY KEY (rev)
+);
+
+CREATE TABLE users_aud
+(
+    id bigint NOT NULL,
+    rev integer NOT NULL,
+    revtype smallint,
+    dateofinsert timestamp without time zone,
+    password character varying(255),
+    status integer,
+    username character varying(255),
+    person_id bigint,
+    CONSTRAINT users_aud_pkey PRIMARY KEY (id, rev),
+    CONSTRAINT users_aud_revinfo_rev FOREIGN KEY (rev)
+        REFERENCES public.revinfo (rev) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
 );

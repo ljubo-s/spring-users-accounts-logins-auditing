@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.spring.users.model.Person;
 import com.spring.users.model.Users;
+import com.spring.users.model.Person;
 import com.spring.users.service.PersonService;
 import com.spring.users.service.UsersService;
 

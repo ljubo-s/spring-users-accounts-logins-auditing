@@ -11,7 +11,7 @@
 		<tr>
 			<td align="center">
 				<h2>
-					Persons &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="../"> * </a>
+					Persons &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/"> * </a>
 				</h2>
 
 				<form:form action="/person/person.form" method="post" modelAttribute="person">

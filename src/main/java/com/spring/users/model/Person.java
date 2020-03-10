@@ -9,7 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.FetchType;
-//import javax.persistence.JoinColumn;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import org.hibernate.annotations.Cascade;
@@ -21,7 +20,7 @@ import com.spring.users.model.Users;
 @Table(name = "person")
 public class Person {
 
-    private Integer id;
+    private Long id;
     private String name;
     private String surname;
     @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
@@ -41,11 +40,11 @@ public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -150,7 +149,7 @@ public class Person {
         this.usersSet = usersSet;
     }
 
-    /*
+/*
     @OneToMany
     @Cascade({CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "person_id")

@@ -4,14 +4,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <%@ include file="includes.jsp"%>
-<title>Users and Role</title>
+<title>Logins</title>
 <script>
 	function val() {
 		d = document.getElementById("select_users_id").value;
 		document.getElementById("users_id").value = d;
-
-		d = document.getElementById("select_role_id").value;
-		document.getElementById("role_id").value = d;
 	}
 </script>
 </head>
@@ -20,32 +17,52 @@
 		<tr>
 			<td align="center">
 				<h2>
-					Users x Role &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/"> * </a>
+					Logins &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/"> * </a>
 				</h2>
 
-				<form:form action="/usersRole/usersRole.form" method="post" modelAttribute="usersRole">
+				<form:form action="/logins/logins.form" method="post" modelAttribute="logins">
 
 					<table>
 						<tr>
 							<td>Id</td>
 							<td>
-								<form:input path="id"></form:input>
+								<form:input path="id" id="paramid" value="${param.id}" />
 							</td>
 						</tr>
 						<tr>
-							<td>Description</td>
+							<td>Name</td>
 							<td>
-								<form:input path="description"></form:input>
+								<form:input path="browser"></form:input>
 							</td>
 						</tr>
 						<tr>
-							<td>Status</td>
+							<td>Date</td>
 							<td>
-								<form:input path="status"></form:input>
+								<form:input path="dateofinsert"></form:input>
 							</td>
 						</tr>
 						<tr>
-							<td>Users Id</td>
+							<td>IP</td>
+							<td>
+								<form:input path="ip"></form:input>
+							</td>
+						</tr>
+						<tr>
+							<td>Success</td>
+							<td>
+								<form:input path="success"></form:input>
+							</td>
+						</tr>
+			<!--  			
+						<tr>
+							<td>User Id</td>
+							<td>
+								<form:input path="users.id"></form:input>
+							</td>
+						</tr>
+			-->		
+						<tr>
+							<td>User Id</td>
 							<td>
 								<form:input path="users.id" id="users_id" value="${param.users_id}"></form:input>
 								&nbsp;&nbsp;&nbsp; Id:
@@ -57,21 +74,7 @@
 									</c:forEach>
 								</select>
 							</td>
-						</tr>
-						<tr>
-							<td>Role Id</td>
-							<td>
-								<form:input path="role.id" id="role_id" value="${param.role_id}"></form:input>
-								&nbsp;&nbsp;&nbsp; Id:
-							</td>
-							<td>
-								<select name="" onchange="val()" id="select_role_id">
-									<c:forEach items="${roleList}" var="role">
-										<option value="${role.id}">id: ${role.id},&nbsp; ${role.title}</option>
-									</c:forEach>
-								</select>
-							</td>
-						</tr>
+						</tr>	
 						<tr>
 							<td colspan="2">
 								<br></br>
@@ -90,23 +93,25 @@
 						<tr>
 							<th>rb</th>
 							<th>Id</th>
-							<th>Description</th>
-							<th>Status</th>
-							<th>Users id</th>
-							<th>Role id</th>
+							<th>Browser</th>
+							<th>Date</th>
+							<th>IP</th>
+							<th>Success</th>
+							<th>User Id</th>
 						</tr>
 					</thead>
 					<tbody style="background: #ccc">
-						<c:forEach items="${usersRoleList}" var="usersRole" varStatus="i">
+						<c:forEach items="${loginsList}" var="logins" varStatus="i">
 							<tr align="center">
 								<td>
 									<c:out value="${i.index + 1 }" />
 								</td>
-								<td>${usersRole.id}</td>
-								<td>${usersRole.description}</td>
-								<td>${usersRole.status}</td>
-								<td>${usersRole.users.id}</td>
-								<td>${usersRole.role.id}</td>
+								<td>${logins.id}</td>
+								<td>${logins.browser}</td>
+								<td>${logins.dateofinsert}</td>
+								<td>${logins.ip}</td>
+								<td>${logins.success}</td>
+								<td>${logins.users.id}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

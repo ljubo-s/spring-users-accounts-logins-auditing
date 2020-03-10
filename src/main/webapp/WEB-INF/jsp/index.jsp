@@ -14,53 +14,11 @@
 				<h1>Index</h1>
 				<p></p>
 				<table style="width: 97%; border-spacing: 10px;">
-
-					<tr style="width: 100%; height: 75px; cellspacing: 20px;">
-						<td style="border: 1px solid black; height: 70px; width: 300px; text-align: left; padding-left: 10px;">
-							<details> 
-								<summary>Permissions</summary>
-								<p>1. Permissions</p>
-								<p>2. Permissions List</p>
-								<p>3. Permissions & Users</p>
-								<p>4. Permissions & Role</p>
-							</details>
-						</td>
-						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center">
-							<a href="permission">
-								<button type="button" style="height: 50px; width: 120px;">Permissions</button>
-							</a>
-						</td>
-						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
-							<a href="permission/list">
-								<button type="button" style="height: 50px; width: 120px;">Permission List</button>
-							</a>
-						</td>
-						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
-							<a href="permissionUsers">
-								<button type="button" style="height: 50px; width: 120px;">Permission & Users</button>
-							</a>
-						</td>
-						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
-							<a href="permissionUsers/list">
-								<button type="button" style="height: 50px; width: 120px;">PermissionUsers List</button>
-							</a>
-						</td>
-						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
-							<a href="permissionRole">
-								<button type="button" style="height: 50px; width: 120px;">Permission & Role</button>
-							</a>
-						</td>
-						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
-							<a href="permissionRole/list">
-								<button type="button" style="height: 50px; width: 120px;">PermisionRole List</button>
-							</a>
-						</td>
-					</tr>
 					
 					<tr style="width: 100%; height: 75px; cellspacing: 20px;">
 						<td style="border: 1px solid black; height: 70px; width: 300px; text-align: left; padding-left: 10px;">
 							<details> 
-								<summary>Rolls</summary>
+								<summary>Roles</summary>
 								<p>1. Roles</p>
 							</details>
 						</td>
@@ -95,6 +53,7 @@
 							</a>
 						</td>
 					</tr>
+					
 					<tr style="width: 100%; height: 75px; cellspacing: 20px;">
 						<td style="border: 1px solid black; height: 70px; width: 300px; text-align: left; padding-left: 10px;">
 							<details>
@@ -121,6 +80,45 @@
 						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
 							<a href="usersRole/list">
 								<button type="button" style="height: 50px; width: 120px;">UsersRoleList</button>
+							</a>
+						</td>
+						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
+							<a href="">
+								<button type="button" style="height: 50px; width: 120px;"></button>
+							</a>
+						</td>
+						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
+							<a href="">
+								<button type="button" style="height: 50px; width: 120px;"></button>
+							</a>
+						</td>
+					</tr>
+					
+					<tr style="width: 100%; height: 75px; cellspacing: 20px;">
+						<td style="border: 1px solid black; height: 70px; width: 300px; text-align: left; padding-left: 10px;">
+							<details>
+							<summary>Person </summary>
+							<p>1. Person</p>
+							</details>
+						</td>
+						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
+							<a href="person">
+								<button type="button" style="height: 50px; width: 120px;">Person</button>
+							</a>
+						</td>
+						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
+							<a href="person/list">
+								<button type="button" style="height: 50px; width: 120px;">Person List</button>
+							</a>
+						</td>
+						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
+							<a href="">
+								<button type="button" style="height: 50px; width: 120px;"></button>
+							</a>
+						</td>
+						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
+							<a href="">
+								<button type="button" style="height: 50px; width: 120px;"></button>
 							</a>
 						</td>
 						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
