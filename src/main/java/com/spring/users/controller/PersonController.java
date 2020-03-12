@@ -44,7 +44,7 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/updatePerson/{id}", method = RequestMethod.GET)
-    public ModelAndView updatePerson(@PathVariable Long id) {
+    public ModelAndView updatePerson(@PathVariable Integer id) {
         ModelAndView model = new ModelAndView("personList");
         Person person = personService.getPersonById(id);
         model.addObject("personForm", person);
@@ -65,7 +65,7 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/deletePerson/{id}", method = RequestMethod.GET)
-    public ModelAndView deletePerson(@PathVariable("id") Long id) {
+    public ModelAndView deletePerson(@PathVariable("id") Integer id) {
         try {
             personService.deletePerson(id);
         } catch (final Exception e) {
@@ -109,7 +109,7 @@ public class PersonController {
             case "delete":
                 if (person.getId() != null) {
                     try {
-                        personService.deletePerson(Long.valueOf(person.getId()));
+                        personService.deletePerson(person.getId());
                         personResult = new Person();
                     } catch (final Exception e) {
                         System.err.println("Caught IOException: " + e.getMessage());
@@ -119,7 +119,7 @@ public class PersonController {
 
             case "search":
                 if (person.getId() != null) {
-                    searchedPerson = personService.getPersonById(Long.valueOf(person.getId()));
+                    searchedPerson = personService.getPersonById(person.getId());
                     personResult = searchedPerson != null ? searchedPerson : new Person();
                 }
                 break;

@@ -42,7 +42,7 @@ public class UsersController {
     }
 
     @RequestMapping(value = "/updateUsers/{id}", method = RequestMethod.GET)
-    public ModelAndView updateUsers(@PathVariable Long id) {
+    public ModelAndView updateUsers(@PathVariable Integer id) {
         ModelAndView model = new ModelAndView("usersList");
         Users users = usersService.getUsersById(id);
         model.addObject("usersForm", users);
@@ -57,7 +57,7 @@ public class UsersController {
     }
 
     @RequestMapping(value = "/deleteUsers/{id}", method = RequestMethod.GET)
-    public ModelAndView deleteUsers(@PathVariable("id") Long id) {
+    public ModelAndView deleteUsers(@PathVariable("id") Integer id) {
 
         try {
             usersService.deleteUsers(id);

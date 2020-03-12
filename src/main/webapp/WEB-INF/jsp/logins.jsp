@@ -69,9 +69,11 @@
 							</td>
 							<td>
 								<select name="" onchange="val()" id="select_users_id">
+									<option value="">	choose id	</option>
 									<c:forEach items="${usersList}" var="users">
 										<option value="${users.id}">id: ${users.id},&nbsp; ${users.username}</option>
 									</c:forEach>
+								
 								</select>
 							</td>
 						</tr>	

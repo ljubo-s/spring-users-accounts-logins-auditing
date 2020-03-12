@@ -4,17 +4,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <%@ include file="includes.jsp"%>
-<title>Role</title>
+<title>Roles</title>
 </head>
 <body>
 	<table width="100%" align="center">
 		<tr>
 			<td align="center">
 				<h2>
-					Role &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="../"> * </a>
+					Roles &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="../"> * </a>
 				</h2>
 
-				<form:form action="/role/role.form" method="post" modelAttribute="role">
+				<form:form action="/roles/roles.form" method="post" modelAttribute="roles">
 
 					<table>
 						<tr>
@@ -65,15 +65,15 @@
 						</tr>
 					</thead>
 					<tbody style="background: #ccc">
-						<c:forEach items="${roleList}" var="role" varStatus="i">
+						<c:forEach items="${rolesList}" var="roles" varStatus="i">
 							<tr align="center">
 								<td>
 									<c:out value="${i.index + 1 }" />
 								</td>
-								<td>${role.id}</td>
-								<td>${role.title}</td>
-								<td>${role.description}</td>
-								<td>${role.status}</td>
+								<td>${roles.id}</td>
+								<td>${roles.title}</td>
+								<td>${roles.description}</td>
+								<td>${roles.status}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

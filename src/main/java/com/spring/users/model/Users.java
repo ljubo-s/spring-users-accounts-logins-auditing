@@ -19,17 +19,17 @@ import com.spring.users.model.Users;
 @Table(name = "users")
 public class Users {
 
-    private Long id;
+    private Integer id;
     private String username;
     private String password;
-    private int status;
+    private Integer status;
     @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private Date dateofinsert;
     private Person person;
 
     public Users() {}
 
-    public Users(String username, String password, int status) {
+    public Users(String username, String password, Integer status) {
         super();
         this.username = username;
         this.password = password;
@@ -38,11 +38,11 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -65,11 +65,11 @@ public class Users {
     }
 
     @Column(name = "status")
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

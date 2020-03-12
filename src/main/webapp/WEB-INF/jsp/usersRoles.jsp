@@ -10,8 +10,8 @@
 		d = document.getElementById("select_users_id").value;
 		document.getElementById("users_id").value = d;
 
-		d = document.getElementById("select_role_id").value;
-		document.getElementById("role_id").value = d;
+		d = document.getElementById("select_roles_id").value;
+		document.getElementById("roles_id").value = d;
 	}
 </script>
 </head>
@@ -23,7 +23,7 @@
 					Users x Role &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/"> * </a>
 				</h2>
 
-				<form:form action="/usersRole/usersRole.form" method="post" modelAttribute="usersRole">
+				<form:form action="/usersRoles/usersRoles.form" method="post" modelAttribute="usersRoles">
 
 					<table>
 						<tr>
@@ -52,6 +52,7 @@
 							</td>
 							<td>
 								<select name="" onchange="val()" id="select_users_id">
+									<option value="">	choose id	</option>
 									<c:forEach items="${usersList}" var="users">
 										<option value="${users.id}">id: ${users.id},&nbsp; ${users.username}</option>
 									</c:forEach>
@@ -61,13 +62,14 @@
 						<tr>
 							<td>Role Id</td>
 							<td>
-								<form:input path="role.id" id="role_id" value="${param.role_id}"></form:input>
+								<form:input path="roles.id" id="roles_id" value="${param.roles_id}"></form:input>
 								&nbsp;&nbsp;&nbsp; Id:
 							</td>
 							<td>
-								<select name="" onchange="val()" id="select_role_id">
-									<c:forEach items="${roleList}" var="role">
-										<option value="${role.id}">id: ${role.id},&nbsp; ${role.title}</option>
+								<select name="" onchange="val()" id="select_roles_id">
+									<option value="">	choose id	</option>
+									<c:forEach items="${rolesList}" var="roles">
+										<option value="${roles.id}">id: ${roles.id},&nbsp; ${roles.title}</option>
 									</c:forEach>
 								</select>
 							</td>
@@ -97,16 +99,16 @@
 						</tr>
 					</thead>
 					<tbody style="background: #ccc">
-						<c:forEach items="${usersRoleList}" var="usersRole" varStatus="i">
+						<c:forEach items="${usersRolesList}" var="usersRole" varStatus="i">
 							<tr align="center">
 								<td>
 									<c:out value="${i.index + 1 }" />
 								</td>
-								<td>${usersRole.id}</td>
-								<td>${usersRole.description}</td>
-								<td>${usersRole.status}</td>
-								<td>${usersRole.users.id}</td>
-								<td>${usersRole.role.id}</td>
+								<td>${usersRoles.id}</td>
+								<td>${usersRoles.description}</td>
+								<td>${usersRoles.status}</td>
+								<td>${usersRoles.users.id}</td>
+								<td>${usersRoles.roles.id}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

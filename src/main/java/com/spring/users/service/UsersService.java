@@ -7,10 +7,10 @@ public interface UsersService {
 
     public List<Users> getAllUsers();
 
-    public Users getUsersById(Long id);
+    public Users getUsersById(Integer id);
 
     public void saveOrUpdate(Users users);
 
-    public void deleteUsers(Long id);
+    public void deleteUsers(Integer id);
 
 }

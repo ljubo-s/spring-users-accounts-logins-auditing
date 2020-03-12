@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="container">
-		<h2>Users List &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="../"> * </a></h2>
+		<h2>Users List &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/"> * </a></h2>
 		<table class="table table-striped">
 			<tr>
 				<th scope="row">#ID</th>

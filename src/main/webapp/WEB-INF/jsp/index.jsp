@@ -23,13 +23,13 @@
 							</details>
 						</td>
 						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
-							<a href="role">
-								<button type="button" style="height: 50px; width: 120px;">Role</button>
+							<a href="roles">
+								<button type="button" style="height: 50px; width: 120px;">Roles</button>
 							</a>
 						</td>
 						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
-							<a href="role/list">
-								<button type="button" style="height: 50px; width: 120px;">Role List</button>
+							<a href="roles/list">
+								<button type="button" style="height: 50px; width: 120px;">Roles List</button>
 							</a>
 						</td>
 						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
@@ -59,7 +59,7 @@
 							<details>
 							<summary>Users </summary>
 							<p>1. Users</p>
-							<p>2. Users & Role</p>
+							<p>2. Users & Roles</p>
 							</details>
 						</td>
 						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
@@ -73,18 +73,18 @@
 							</a>
 						</td>
 						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
-							<a href="usersRole">
-								<button type="button" style="height: 50px; width: 120px;">Users & Role</button>
+							<a href="usersRoles">
+								<button type="button" style="height: 50px; width: 120px;">Users & Roles</button>
 							</a>
 						</td>
 						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
-							<a href="usersRole/list">
-								<button type="button" style="height: 50px; width: 120px;">UsersRoleList</button>
+							<a href="usersRoles/list">
+								<button type="button" style="height: 50px; width: 120px;">UsersRolesList</button>
 							</a>
 						</td>
 						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
-							<a href="">
-								<button type="button" style="height: 50px; width: 120px;"></button>
+							<a href="usersaud">
+								<button type="button" style="height: 50px; width: 120px;">Users Aud</button>
 							</a>
 						</td>
 						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
@@ -132,6 +132,46 @@
 							</a>
 						</td>
 					</tr>
+				
+					<tr style="width: 100%; height: 75px; cellspacing: 20px;">
+						<td style="border: 1px solid black; height: 70px; width: 300px; text-align: left; padding-left: 10px;">
+							<details> 
+								<summary>Logins</summary>
+								<p>1. Logins</p>
+							</details>
+						</td>
+						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
+							<a href="logins">
+								<button type="button" style="height: 50px; width: 120px;">Logins</button>
+							</a>
+						</td>
+						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
+							<a href="">
+								<button type="button" style="height: 50px; width: 120px;"></button>
+							</a>
+						</td>
+						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
+							<a href="">
+								<button type="button" style="height: 50px; width: 120px;"></button>
+							</a>
+						</td>
+						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
+							<a href="">
+								<button type="button" style="height: 50px; width: 120px;"></button>
+							</a>
+						</td>
+						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
+							<a href="">
+								<button type="button" style="height: 50px; width: 120px;"></button>
+							</a>
+						</td>
+						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
+							<a href="">
+								<button type="button" style="height: 50px; width: 120px;"></button>
+							</a>
+						</td>
+					</tr>
+				
 				</table>
 			</td>
 		</tr>

@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <%@ include file="includes.jsp"%>
-<title>Users</title>
+<title>Users Aud</title>
 <script>
 	function val() {
 		personId = document.getElementById("select_person_id").value;
@@ -17,16 +17,28 @@
 		<tr>
 			<td align="center">
 				<h2>
-					Users &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/"> * </a>
+					Users Aud &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/"> * </a>
 				</h2>
 
-				<form:form action="/users/users.form" method="post" modelAttribute="users">
+				<form:form action="/usersaud/usersaud.form" method="post" modelAttribute="usersaud">
 
 					<table>
 						<tr>
-							<td>Id</td>
+							<td>Rev[Id]</td>
 							<td>
-								<form:input path="id" id="paramid" value="${param.id}" />
+								<form:input path="rev"></form:input>
+							</td>
+						</tr>
+						<tr>
+							<td>Rev Type</td>
+							<td>
+								<form:input path="revtype"></form:input>
+							</td>
+						</tr>
+						<tr>
+							<td>Users Id</td>
+							<td>
+								<form:input path="id"></form:input>
 							</td>
 						</tr>
 						<tr>
@@ -56,24 +68,15 @@
 						<tr>
 							<td>Person Id</td>
 							<td>
-								<form:input path="person.id" id="person_id" value="${param.person_id}"></form:input>
-								&nbsp;&nbsp;&nbsp; Id:
-							</td>
-							<td>
-								<select name="" onchange="val()" id="select_person_id">
-									<option value="">	choose id	</option>
-									<c:forEach items="${personList}" var="person">
-										<option value="${person.id}">id: ${person.id},&nbsp; ${person.name}</option>
-									</c:forEach>
-								</select>
+								<form:input path="person.id"></form:input>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">
 								<br></br>
-								<input type="submit" name="action" value="Add" />
-								<input type="submit" name="action" value="Edit" />
-								<input type="submit" name="action" value="Delete" />
+								<input type="submit" name="action" value="" />
+								<input type="submit" name="action" value="" />
+								<input type="submit" name="action" value="" />
 								<input type="submit" name="action" value="Search" />
 								<br></br>
 							</td>
@@ -85,6 +88,8 @@
 					<thead style="background: #d3dce3">
 						<tr>
 							<th>rb</th>
+							<th>Rev</th>
+							<th>Rev Type</th>
 							<th>Id</th>
 							<th>Username</th>
 							<th>Password</th>
@@ -94,17 +99,19 @@
 						</tr>
 					</thead>
 					<tbody style="background: #ccc">
-						<c:forEach items="${usersList}" var="users" varStatus="i">
+						<c:forEach items="${usersaudList}" var="usersaud" varStatus="i">
 							<tr align="center">
 								<td>
 									<c:out value="${i.index + 1 }" />
 								</td>
-								<td>${users.id}</td>
-								<td>${users.username}</td>
-								<td>${users.password}</td>
-								<td>${users.status}</td>
-								<td>${users.dateofinsert}</td>
-								<td>${users.person.id}</td>
+								<td>${usersaud.rev}</td>
+								<td>${usersaud.revtype}</td>
+								<td>${usersaud.id}</td>
+								<td>${usersaud.username}</td>
+								<td>${usersaud.password}</td>
+								<td>${usersaud.status}</td>
+								<td>${usersaud.dateofinsert}</td>
+								<td>${usersaud.person.id}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

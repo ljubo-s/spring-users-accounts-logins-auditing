@@ -21,7 +21,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public Users getUsersById(Long id) {
+    public Users getUsersById(Integer id) {
         return usersRepository.findById(id).get();
     }
 
@@ -31,7 +31,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public void deleteUsers(Long id) {
+    public void deleteUsers(Integer id) {
         usersRepository.deleteById(id);
     }
 

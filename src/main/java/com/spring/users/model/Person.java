@@ -20,7 +20,7 @@ import com.spring.users.model.Users;
 @Table(name = "person")
 public class Person {
 
-    private Long id;
+    private Integer id;
     private String name;
     private String surname;
     @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
@@ -40,11 +40,11 @@ public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
