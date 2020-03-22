@@ -16,7 +16,6 @@ import com.spring.users.service.PersonService;
 import com.spring.users.service.UsersService;
 
 @Controller
-@RequestMapping(value = "/users")
 public class UsersController {
 
     @Autowired
@@ -24,7 +23,7 @@ public class UsersController {
     @Autowired
     private PersonService personService;
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/list", method = RequestMethod.GET)
     public ModelAndView list() {
         ModelAndView model = new ModelAndView("usersList");
         List<Users> usersList = usersService.getAllUsers();
@@ -32,7 +31,7 @@ public class UsersController {
         return model;
     }
 
-    @RequestMapping(value = "/addUsers/", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/addUsers/", method = RequestMethod.GET)
     public ModelAndView addUsers() {
         ModelAndView model = new ModelAndView("usersList");
         Users users = new Users();
@@ -41,7 +40,7 @@ public class UsersController {
         return model;
     }
 
-    @RequestMapping(value = "/updateUsers/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/updateUsers/{id}", method = RequestMethod.GET)
     public ModelAndView updateUsers(@PathVariable Integer id) {
         ModelAndView model = new ModelAndView("usersList");
         Users users = usersService.getUsersById(id);
@@ -50,13 +49,13 @@ public class UsersController {
         return model;
     }
 
-    @RequestMapping(value = "/saveUsers", method = RequestMethod.POST)
+    @RequestMapping(value = "/users/saveUsers", method = RequestMethod.POST)
     public ModelAndView saveUsers(@ModelAttribute("usersForm") Users users) {
         usersService.saveOrUpdate(users);
         return new ModelAndView("redirect:/users/list");
     }
 
-    @RequestMapping(value = "/deleteUsers/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/deleteUsers/{id}", method = RequestMethod.GET)
     public ModelAndView deleteUsers(@PathVariable("id") Integer id) {
 
         try {
@@ -65,10 +64,15 @@ public class UsersController {
             System.err.println("Caught IOException: " + e.getMessage());
         }
 
-        return new ModelAndView("redirect:/users/list");
+        //return new ModelAndView("redirect:/users/list");
+        
+        ModelAndView model = new ModelAndView("usersList");
+        List<Users> usersList = usersService.getAllUsers();
+        model.addObject("usersList", usersList);
+        return model;
     }
 
-    @RequestMapping("")
+    @RequestMapping("/users")
     public String setupForm(Map<String, Object> map) {
         Users users = new Users();
         map.put("users", users);
@@ -87,8 +91,13 @@ public class UsersController {
         switch (action.toLowerCase()) {
 
             case "add":
-                usersService.saveOrUpdate(users);
-                usersResult = users;
+                try {
+                    usersService.saveOrUpdate(users);
+                    usersResult = users;
+                } catch (final Exception e) {
+                    System.err.println("Caught IOException: " + e.getMessage());
+                }
+ 
                 break;
             case "edit":
                 if (users.getId() != null) {
@@ -107,15 +116,21 @@ public class UsersController {
                 }
                 break;
             case "search":
-                if (users.getId() != null) {
-                    searchedUsers = usersService.getUsersById(users.getId());
-                    usersResult = searchedUsers != null ? searchedUsers : new Users();
+                try {
+                    if (users.getId() != null) {
+                        searchedUsers = usersService.getUsersById(users.getId());
+                        usersResult = searchedUsers != null ? searchedUsers : new Users();
+                    }                } catch (final Exception e) {
+                    System.err.println("Caught IOException: " + e.getMessage());
                 }
+                
                 break;
         }
 
         map.put("users", usersResult);
         map.put("usersList", usersService.getAllUsers());
+        map.put("personList", personService.getAllPerson());
+        
         return "users";
     }
 

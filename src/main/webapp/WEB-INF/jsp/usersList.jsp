@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="container">
-		<h2>Users List &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/"> * </a></h2>
+		<h2>Users List &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/auditing/index"> * </a></h2>
 		<table class="table table-striped">
 			<tr>
 				<th scope="row">#ID</th>
@@ -20,31 +20,35 @@
 				<th scope="row">Password</th>
 				<th scope="row">Status</th>
 				<th scope="row">Date of insert</th>
+				<th scope="row">Person Id</th>
+				<th scope="row">Person Name</th>
 				<th scope="row">Update</th>
 				<th scope="row">Delete</th>
 			</tr>
 			<tbody>
-				<c:forEach items="${usersList }" var="users">
+				<c:forEach items="${usersList}" var="users">
 					<tr>
-						<td>${users.id }</td>
-						<td>${users.username }</td>
-						<td>${users.password }</td>
-						<td>${users.status }</td>
-						<td>${users.dateofinsert }</td>
+						<td>${users.id}</td>
+						<td>${users.username}</td>
+						<td>${users.password}</td>
+						<td>${users.status}</td>
+						<td>${users.dateofinsert}</td>
+						<td>${users.person.id}</td>
+						<td>${users.person.name}</td>
 						<td>
-							<spring:url value="/users/updateUsers/${users.id }" var="updateURL" />
-							<a class="btn btn-primary" href="${updateURL }" role="button">Update</a>
+							<spring:url value="/users/updateUsers/${users.id}" var="updateURL" />
+							<a class="btn btn-primary" href="${updateURL}" role="button">Update</a>
 						</td>
 						<td>
-							<spring:url value="/users/deleteUsers/${users.id }" var="deleteURL" />
-							<a class="btn btn-primary" href="${deleteURL }" role="button">Delete</a>
+							<spring:url value="/users/deleteUsers/${users.id}" var="deleteURL" />
+							<a class="btn btn-primary" href="${deleteURL}" role="button">Delete</a>
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<spring:url value="/users/addUsers/" var="addURL" />
-		<a class="btn btn-primary" href="${addURL }" role="button">Add New Users</a>
+		<a class="btn btn-primary" href="${addURL}" role="button">Add New Users</a>
 	</div>
 </body>
 </html>

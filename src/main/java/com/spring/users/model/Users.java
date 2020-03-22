@@ -1,15 +1,22 @@
 package com.spring.users.model;
 
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.validation.constraints.NotEmpty;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 import org.hibernate.envers.RelationTargetAuditMode;
 import org.springframework.format.annotation.DateTimeFormat;
 import com.spring.users.model.Users;
@@ -19,77 +26,93 @@ import com.spring.users.model.Users;
 @Table(name = "users")
 public class Users {
 
-    private Integer id;
-    private String username;
-    private String password;
-    private Integer status;
-    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-    private Date dateofinsert;
-    private Person person;
+	private Integer id;
+	private String username;
+	private String password;
+	private Integer status;
+	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+	private Date dateofinsert;
 
-    public Users() {}
+	private Set<UsersRoles> usersRoles;
+	private Person person;
 
-    public Users(String username, String password, Integer status) {
-        super();
-        this.username = username;
-        this.password = password;
-        this.status = status;
-    }
+	public Users() {
+	}
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getId() {
-        return id;
-    }
+	public Users(String username, String password, Integer status) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.status = status;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Integer getId() {
+		return id;
+	}
 
-    @Column(name = "username")
-    public String getUsername() {
-        return username;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	@NotEmpty
+	@Column(name = "username", nullable = false, unique = true)
+	public String getUsername() {
+		return username;
+	}
 
-    @Column(name = "password")
-    public String getPassword() {
-        return password;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	@Column(name = "password")
+	public String getPassword() {
+		return password;
+	}
 
-    @Column(name = "status")
-    public Integer getStatus() {
-        return status;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+	@Column(name = "status")
+	public Integer getStatus() {
+		return status;
+	}
 
-    @Column(name = "dateofinsert")
-    public Date getDateofinsert() {
-        return this.dateofinsert;
-    }
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 
-    public void setDateofinsert(Date dateofinsert) {
-        this.dateofinsert = dateofinsert;
-    }
+	@Column(name = "dateofinsert")
+	public Date getDateofinsert() {
+		return this.dateofinsert;
+	}
 
-    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    @ManyToOne
-    @JoinColumn(name = "person_id")
-    public Person getPerson() {
-        return person;
-    }
+	public void setDateofinsert(Date dateofinsert) {
+		this.dateofinsert = dateofinsert;
+	}
 
-    public void setPerson(Person person) {
-        this.person = person;
-    }
+	@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+	@ManyToOne
+	@JoinColumn(name = "person_id", nullable = false)
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	@NotAudited
+	@OneToMany(fetch = FetchType.EAGER)
+	@Cascade({ CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
+	@JoinColumn(name = "roles_id")
+	public Set<UsersRoles> getUsersRoles() {
+		return usersRoles;
+	}
+
+	public void setUsersRoles(Set<UsersRoles> usersRoles) {
+		this.usersRoles = usersRoles;
+	}
 }

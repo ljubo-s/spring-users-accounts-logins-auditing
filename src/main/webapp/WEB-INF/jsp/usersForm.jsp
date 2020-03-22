@@ -32,6 +32,10 @@
 				<label>Date of Insert</label>
 				<form:input path="dateofinsert" cssClass="form-control" id="dateofinsert" />
 			</div>
+			<div class="form-group">
+				<label>Person Id</label>
+				<form:input path="person.id" cssClass="form-control" id="person.id" />
+			</div>			
 			<button type="submit" class="btn btn-primary">Save</button>
 		</form:form>
 

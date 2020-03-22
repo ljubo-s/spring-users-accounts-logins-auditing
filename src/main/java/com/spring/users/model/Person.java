@@ -14,7 +14,6 @@ import javax.persistence.GenerationType;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.springframework.format.annotation.DateTimeFormat;
-import com.spring.users.model.Users;
 
 @Entity
 @Table(name = "person")
@@ -149,16 +148,4 @@ public class Person {
         this.usersSet = usersSet;
     }
 
-/*
-    @OneToMany
-    @Cascade({CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinColumn(name = "person_id")
-    public Set<Users> getUsersSet() {
-        return usersSet;
-    }
-
-    public void setUsers(Set<Users> usersSet) {
-        this.usersSet = usersSet;
-    }
-*/
 }

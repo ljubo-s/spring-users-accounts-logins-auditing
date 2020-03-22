@@ -11,7 +11,7 @@
 		<tr>
 			<td align="center">
 				<h2>
-					Roles &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="../"> * </a>
+					Roles &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/auditing/index"> * </a>
 				</h2>
 
 				<form:form action="/roles/roles.form" method="post" modelAttribute="roles">

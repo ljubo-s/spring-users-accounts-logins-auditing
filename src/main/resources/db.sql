@@ -93,7 +93,7 @@ CREATE TABLE users_aud
 (
     id serial NOT NULL,
     rev integer NOT NULL,
-    revtype smallint,
+    revtype integer,
     dateofinsert timestamp without time zone,
     password character varying(255),
     status integer,

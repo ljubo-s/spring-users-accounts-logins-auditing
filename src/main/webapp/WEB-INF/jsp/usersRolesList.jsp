@@ -24,27 +24,27 @@
 				<th scope="row">Delete</th>
 			</tr>
 			<tbody>
-				<c:forEach items="${usersRolesList }" var="usersRoles">
+				<c:forEach items="${usersRolesList}" var="usersRoles">
 					<tr>
-						<td>${usersRoles.id }</td>
-						<td>${usersRoles.description }</td>
-						<td>${usersRoles.status }</td>
-						<td>${usersRoles.users.id }</td>
-						<td>${usersRoles.roles.id }</td>
+						<td>${usersRoles.id}</td>
+						<td>${usersRoles.description}</td>
+						<td>${usersRoles.status}</td>
+						<td>${usersRoles.users.id}</td>
+						<td>${usersRoles.roles.id}</td>
 						<td>
-							<spring:url value="/usersRoles/updateUsersRoles/${usersRoles.id }" var="updateURL" />
-							<a class="btn btn-primary" href="${updateURL }" roles="button">Update</a>
+							<spring:url value="/usersRoles/updateUsersRoles/${usersRoles.id}" var="updateURL" />
+							<a class="btn btn-primary" href="${updateURL}" roles="button">Update</a>
 						</td>
 						<td>
-							<spring:url value="/usersRoles/deleteUsersRoles/${usersRoles.id }" var="deleteURL" />
-							<a class="btn btn-primary" href="${deleteURL }" roles="button">Delete</a>
+							<spring:url value="/usersRoles/deleteUsersRoles/${usersRoles.id}" var="deleteURL" />
+							<a class="btn btn-primary" href="${deleteURL}" roles="button">Delete</a>
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<spring:url value="/usersRoles/addUsersRoles/" var="addURL" />
-		<a class="btn btn-primary" href="${addURL }" roles="button">Add New Users x Roles</a>
+		<a class="btn btn-primary" href="${addURL}" roles="button">Add New Users x Roles</a>
 	</div>
 </body>
 </html>

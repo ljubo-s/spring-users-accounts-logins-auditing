@@ -12,27 +12,37 @@ import com.spring.users.service.UsersService;
 @Transactional
 public class UsersServiceImpl implements UsersService {
 
-    @Autowired
-    private UsersRepository usersRepository;
+	@Autowired
+	private UsersRepository usersRepository;
 
-    @Override
-    public List<Users> getAllUsers() {
-        return (List<Users>) usersRepository.findAll();
-    }
+	@Override
+	public List<Users> getAllUsers() {
+		return (List<Users>) usersRepository.findAll();
+	}
 
-    @Override
-    public Users getUsersById(Integer id) {
-        return usersRepository.findById(id).get();
-    }
+	@Override
+	public Users getUsersById(Integer id) {
+		return usersRepository.findById(id).get();
+	}
 
-    @Override
-    public void saveOrUpdate(Users users) {
-        usersRepository.save(users);
-    }
+	@Override
+	public void saveOrUpdate(Users users) {
+		usersRepository.save(users);
+	}
 
-    @Override
-    public void deleteUsers(Integer id) {
-        usersRepository.deleteById(id);
-    }
+	@Override
+	public void deleteUsers(Integer id) {
+		usersRepository.deleteById(id);
+	}
+
+	@Override
+	public Users getUserByUsername(String username) {
+		return usersRepository.getUserByUsername(username);
+	}
+
+	@Override
+	public Users getUserByUsernameAndPassword(String username, String password) {
+		return getUserByUsernameAndPassword(username, password);
+	}
 
 }

@@ -20,7 +20,7 @@
 						<tr>
 							<td>Id</td>
 							<td>
-								<form:input path="id" id="paramid" value="${param.id}" />
+								<form:input path="id"/>
 							</td>
 						</tr>
 						<tr>
@@ -75,7 +75,7 @@
 						<c:forEach items="${personList}" var="person" varStatus="i">
 							<tr align="center">
 								<td>
-									<c:out value="${i.index + 1 }" />
+									<c:out value="${i.index + 1}" />
 								</td>
 								<td>${person.id}</td>
 								<td>${person.name}</td>

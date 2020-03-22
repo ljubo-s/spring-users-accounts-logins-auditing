@@ -17,16 +17,16 @@
 		<tr>
 			<td align="center">
 				<h2>
-					Users &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/"> * </a>
+					Users &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="index"> * </a>
 				</h2>
 
-				<form:form action="/users/users.form" method="post" modelAttribute="users">
+				<form:form action="users.form" method="post" modelAttribute="users">
 
 					<table>
 						<tr>
 							<td>Id</td>
 							<td>
-								<form:input path="id" id="paramid" value="${param.id}" />
+								<form:input path="id" />
 							</td>
 						</tr>
 						<tr>
@@ -91,6 +91,7 @@
 							<th>Status</th>
 							<th>Date of insert</th>
 							<th>Person Id</th>
+							<th>Roles </th>
 						</tr>
 					</thead>
 					<tbody style="background: #ccc">
@@ -105,7 +106,12 @@
 								<td>${users.status}</td>
 								<td>${users.dateofinsert}</td>
 								<td>${users.person.id}</td>
-							</tr>
+								<td>
+								<c:forEach var="usersRoles" items="${users.usersRoles}">
+       							     ${usersRoles.roles.title};
+        		             	</c:forEach>
+        		             	</td>
+        		         	</tr>
 						</c:forEach>
 					</tbody>
 				</table>

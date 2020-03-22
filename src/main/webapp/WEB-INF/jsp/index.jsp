@@ -68,9 +68,10 @@
 							</a>
 						</td>
 						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
-							<a href="users/list">
-								<button type="button" style="height: 50px; width: 120px;">Users List</button>
-							</a>
+							<spring:url value="/users/list/" var="usersList" />
+								<a class="btn btn-primary" href="${usersList}" role="button">
+									<button type="button" style="height: 50px; width: 120px;">Users List</button>
+								</a>
 						</td>
 						<td style="border: 1px solid black; height: 70px; width: 200px; text-align: center;">
 							<a href="usersRoles">
@@ -170,6 +171,13 @@
 								<button type="button" style="height: 50px; width: 120px;"></button>
 							</a>
 						</td>
+								<td align="right">
+			<form action="/auditing/logout" method="post">
+				<input type="submit" value="Sign Out" /> 
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			</form>
+		</td>
+						
 					</tr>
 				
 				</table>

@@ -13,4 +13,8 @@ public interface UsersService {
 
     public void deleteUsers(Integer id);
 
+    public Users getUserByUsername(String username);
+    
+    public Users getUserByUsernameAndPassword(String username, String password);
+
 }

@@ -16,93 +16,92 @@ import com.spring.users.model.UsersAud;
 @Table(name = "users_aud")
 public class UsersAud {
 
-    private Integer rev;
-    private Integer revtype;
-    
-    private Integer id;
-    private String username;
-    private String password;
-    private Integer status;
-    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-    private Date dateofinsert;
-    private Person person;
+	private Integer rev;
+	private Integer revtype;
+	private Integer id;
+	private String username;
+	private String password;
+	private Integer status;
+	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+	private Date dateofinsert;
+	private Person person;
 
-    public UsersAud() {}
+	public UsersAud() {
+	}
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "rev", insertable = false, updatable = false, nullable = false)
-    public Integer getRev() {
-        return this.rev;
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "rev", insertable = false, updatable = false, nullable = false)
+	public Integer getRev() {
+		return this.rev;
+	}
 
-    public void setRev(Integer rev) {
-        this.rev = rev;
-    }
+	public void setRev(Integer rev) {
+		this.rev = rev;
+	}
 
-    @Column(name = "revtype")
-    public Integer getRevtype() {
-        return this.revtype;
-    }
+	@Column(name = "revtype")
+	public Integer getRevtype() {
+		return this.revtype;
+	}
 
-    public void setRevtype(Integer revtype) {
-        this.revtype = revtype;
-    }
-    
-    @Column(name = "id")
-    public Integer getId() {
-        return id;
-    }
+	public void setRevtype(Integer revtype) {
+		this.revtype = revtype;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	@Column(name = "id")
+	public Integer getId() {
+		return id;
+	}
 
-    @Column(name = "username")
-    public String getUsername() {
-        return username;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	@Column(name = "username")
+	public String getUsername() {
+		return username;
+	}
 
-    @Column(name = "password")
-    public String getPassword() {
-        return password;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	@Column(name = "password")
+	public String getPassword() {
+		return password;
+	}
 
-    @Column(name = "status")
-    public Integer getStatus() {
-        return status;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+	@Column(name = "status")
+	public Integer getStatus() {
+		return status;
+	}
 
-    @Column(name = "dateofinsert")
-    public Date getDateofinsert() {
-        return this.dateofinsert;
-    }
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 
-    public void setDateofinsert(Date dateofinsert) {
-        this.dateofinsert = dateofinsert;
-    }
+	@Column(name = "dateofinsert")
+	public Date getDateofinsert() {
+		return this.dateofinsert;
+	}
 
-//    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    @ManyToOne
-    @JoinColumn(name = "person_id")
-    public Person getPerson() {
-        return person;
-    }
+	public void setDateofinsert(Date dateofinsert) {
+		this.dateofinsert = dateofinsert;
+	}
 
-    public void setPerson(Person person) {
-        this.person = person;
-    }
+	@ManyToOne
+	@JoinColumn(name = "person_id")
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
 
 }
