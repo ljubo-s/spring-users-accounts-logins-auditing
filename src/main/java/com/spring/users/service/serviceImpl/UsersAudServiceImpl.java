@@ -35,4 +35,9 @@ public class UsersAudServiceImpl implements UsersAudService {
         usersAudRepository.deleteById(id);
     }
 
+    @Override
+    public List<UsersAud> getUsersAudByIdList(Integer id) {
+             return usersAudRepository.findByIdList(id); 
+    }
+
 }

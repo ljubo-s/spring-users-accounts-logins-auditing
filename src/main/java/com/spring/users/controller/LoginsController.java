@@ -17,7 +17,6 @@ import com.spring.users.service.UsersService;
 import com.spring.users.service.LoginsService;
 
 @Controller
-@RequestMapping(value = "/logins")
 public class LoginsController {
 
     @Autowired
@@ -25,7 +24,7 @@ public class LoginsController {
     @Autowired
     private UsersService usersService;
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/logins/list", method = RequestMethod.GET)
     public ModelAndView list() {
         ModelAndView model = new ModelAndView("loginsList");
         List<Logins> loginsList = loginsService.getAllLogins();
@@ -33,7 +32,7 @@ public class LoginsController {
         return model;
     }
 
-    @RequestMapping(value = "/addLogins/", method = RequestMethod.GET)
+    @RequestMapping(value = "/logins/addLogins/", method = RequestMethod.GET)
     public ModelAndView addLogins() {
         ModelAndView model = new ModelAndView("loginsList");
         Logins logins = new Logins();
@@ -42,7 +41,7 @@ public class LoginsController {
         return model;
     }
 
-    @RequestMapping(value = "/updateLogins/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/logins/updateLogins/{id}", method = RequestMethod.GET)
     public ModelAndView updateLogins(@PathVariable Long id) {
         ModelAndView model = new ModelAndView("loginsList");
         Logins logins = loginsService.getLoginsById(id);
@@ -51,7 +50,7 @@ public class LoginsController {
         return model;
     }
 
-    @RequestMapping(value = "/saveLogins", method = RequestMethod.POST)
+    @RequestMapping(value = "/logins/saveLogins", method = RequestMethod.POST)
     public ModelAndView saveLogins(@ModelAttribute("loginsForm") Logins logins) {
 
         try {
@@ -63,7 +62,7 @@ public class LoginsController {
         return new ModelAndView("redirect:/logins/list");
     }
 
-    @RequestMapping(value = "/deleteLogins/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/logins/deleteLogins/{id}", method = RequestMethod.GET)
     public ModelAndView deleteLogins(@PathVariable("id") Long id) {
         try {
             loginsService.deleteLogins(id);
@@ -73,21 +72,22 @@ public class LoginsController {
         return new ModelAndView("redirect:/logins/list");
     }
 
-    @RequestMapping("")
+    @RequestMapping("/logins")
     public String setupForm(Map<String, Object> map) {
         Logins logins = new Logins();
         map.put("logins", logins);
         map.put("loginsList", loginsService.getAllLogins());
-        
+
         Users users = new Users();
         map.put("users", users);
         map.put("usersList", usersService.getAllUsers());
-        
+
         return "logins";
     }
 
     @RequestMapping(value = "/logins.form", method = RequestMethod.POST)
-    public String doActions(@ModelAttribute Logins logins, BindingResult result, @RequestParam String action, Map<String, Object> map) {
+    public String doActions(@ModelAttribute Logins logins, BindingResult result,
+            @RequestParam String action, Map<String, Object> map) {
 
         Logins loginsResult = new Logins();
         Logins searchedLogins = new Logins();

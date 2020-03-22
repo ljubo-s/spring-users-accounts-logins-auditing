@@ -17,7 +17,6 @@ import com.spring.users.service.UsersService;
 import com.spring.users.service.UsersRolesService;
 
 @Controller
-@RequestMapping(value = "/usersRoles")
 public class UsersRolesController {
 
     @Autowired
@@ -27,7 +26,7 @@ public class UsersRolesController {
     @Autowired
     private RolesService rolesService;
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/usersRoles/list", method = RequestMethod.GET)
     public ModelAndView list() {
         ModelAndView model = new ModelAndView("usersRolesList");
         List<UsersRoles> usersRolesList = usersRolesService.getAllUsersRoles();
@@ -35,7 +34,7 @@ public class UsersRolesController {
         return model;
     }
 
-    @RequestMapping(value = "/addUsersRoles/", method = RequestMethod.GET)
+    @RequestMapping(value = "/usersRoles/addUsersRoles/", method = RequestMethod.GET)
     public ModelAndView addUsersRole() {
         ModelAndView model = new ModelAndView("usersRolesList");
         UsersRoles usersRoles = new UsersRoles();
@@ -44,7 +43,7 @@ public class UsersRolesController {
         return model;
     }
 
-    @RequestMapping(value = "/updateUsersRoles/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/usersRoles/updateUsersRoles/{id}", method = RequestMethod.GET)
     public ModelAndView updateUsersRoles(@PathVariable Integer id) {
         ModelAndView model = new ModelAndView("usersRolesList");
         UsersRoles usersRoles = usersRolesService.getUsersRolesById(id);
@@ -53,7 +52,7 @@ public class UsersRolesController {
         return model;
     }
 
-    @RequestMapping(value = "/saveUsersRoles", method = RequestMethod.POST)
+    @RequestMapping(value = "/usersRoles/saveUsersRoles", method = RequestMethod.POST)
     public ModelAndView saveUsersRoles(@ModelAttribute("usersRolesForm") UsersRoles usersRoles) {
 
         try {
@@ -64,7 +63,7 @@ public class UsersRolesController {
         return new ModelAndView("redirect:/usersRoles/list");
     }
 
-    @RequestMapping(value = "/deleteUsersRoles/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/usersRoles/deleteUsersRoles/{id}", method = RequestMethod.GET)
     public ModelAndView deleteUsersRoles(@PathVariable("id") Integer id) {
 
         try {
@@ -76,21 +75,22 @@ public class UsersRolesController {
         return new ModelAndView("redirect:/usersRoles/list");
     }
 
-    @RequestMapping("")
+    @RequestMapping("/usersRoles")
     public String setupForm(Map<String, Object> map) {
         UsersRoles usersRoles = new UsersRoles();
-        
+
         map.put("usersRoles", usersRoles);
         map.put("usersRolesList", usersRolesService.getAllUsersRoles());
-        
+
         map.put("usersList", usersService.getAllUsers());
         map.put("rolesList", rolesService.getAllRoles());
-        
+
         return "usersRoles";
     }
 
     @RequestMapping(value = "/usersRoles.form", method = RequestMethod.POST)
-    public String doActions(@ModelAttribute UsersRoles usersRoles, BindingResult result, @RequestParam String action, Map<String, Object> map) {
+    public String doActions(@ModelAttribute UsersRoles usersRoles, BindingResult result,
+            @RequestParam String action, Map<String, Object> map) {
         UsersRoles usersRoleResult = new UsersRoles();
         UsersRoles searchedUsersRole = new UsersRoles();
 
@@ -120,7 +120,8 @@ public class UsersRolesController {
             case "search":
                 if (usersRoles.getId() != null) {
                     searchedUsersRole = usersRolesService.getUsersRolesById(usersRoles.getId());
-                    usersRoleResult = searchedUsersRole != null ? searchedUsersRole : new UsersRoles();
+                    usersRoleResult =
+                            searchedUsersRole != null ? searchedUsersRole : new UsersRoles();
                 }
                 break;
         }

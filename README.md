@@ -23,6 +23,7 @@ Basic implementation Spring Security for autentication.
         -   Users List
         -   Users & Roles List
         -   Person List
+        -   Roles List
 
 ##  Build and run
 ### Configurations

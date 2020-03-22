@@ -12,5 +12,7 @@ public interface UsersAudService {
     public void saveOrUpdate(UsersAud users);
 
     public void deleteUsersAud(Integer id);
+    
+    public List<UsersAud> getUsersAudByIdList(Integer id);
 
 }

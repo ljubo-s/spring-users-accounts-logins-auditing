@@ -1,13 +1,12 @@
 package com.spring.users.security;
 
-import java.util.Date;
 import java.io.IOException;
 import javax.xml.bind.DatatypeConverter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
@@ -57,45 +56,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .successHandler(new AuthenticationSuccessHandler() {
                     @Override
                     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+
                         redirectStrategy.sendRedirect(request, response, "/index");
-                     
-//                        Date inTime = new Date(System.currentTimeMillis());
-//                        Auditlog auditLog = new Auditlog();
-//                        auditLog.setInfo("Login");
-//                        auditLog.setStatus(AUDITLOG_INFO.getMessage());
-//                        auditLog.setStartTime(inTime);
-//                        auditLog.setObjectData(authentication.toString());
-//                        auditLog.setFunctionName("Login");
-//                        auditLogService.saveOrUpdate(auditLog);
                     }
                 }).permitAll().and()
                   .logout().clearAuthentication(true).logoutUrl("/logout").addLogoutHandler(new LogoutHandler() {
                     @Override
                     public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-                    	System.out.println("from logout");
+                    	
                     	try {
                             redirectStrategy.sendRedirect(request, response, "/");
                         } catch (IOException e) {
                             
-//                            Date time = new Date(System.currentTimeMillis());
-//                            Auditlog auditLog = new Auditlog();
-//                            auditLog.setInfo("Logout Error");
-//                            auditLog.setStatus(AUDITLOG_WARN.getMessage());
-//                            auditLog.setStartTime(time);
-//                            auditLog.setEndTime(time);
-//                            auditLog.setObjectData(e.toString());
-//                            auditLog.setFunctionName("Logout Error");
-//                            auditLogService.saveOrUpdate(auditLog);
+                            System.err.println("Caught IOException: " + e.getMessage());
                         }
-                       
-//                        Date time = new Date(System.currentTimeMillis());
-//                        Auditlog auditLog = new Auditlog();
-//                        auditLog.setInfo("Logout");
-//                        auditLog.setStatus(AUDITLOG_INFO.getMessage());
-//                        auditLog.setObjectData(authentication.toString());
-//                        auditLog.setEndTime(time);
-//                        auditLog.setFunctionName("Logout");
-//                        auditLogService.saveOrUpdate(auditLog);
                     }
                 }).invalidateHttpSession(true)
                   .deleteCookies("JSESSIONID")
@@ -105,16 +79,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) {
+        
         web.ignoring().antMatchers("/webjars/**");
-        web.ignoring().antMatchers("/ws-ebill/**");
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        String passDecrypted;
-        passDecrypted = new String(DatatypeConverter.parseBase64Binary(this.getPassword()));
-        auth.inMemoryAuthentication()
-        .withUser(username).password("{noop}" + passDecrypted).roles("USER");
+        
+        String passDecrypted = new String(DatatypeConverter.parseBase64Binary(this.getPassword()));
+        auth.inMemoryAuthentication().withUser(username).password("{noop}" + passDecrypted).roles("USER");
     }
     
 }

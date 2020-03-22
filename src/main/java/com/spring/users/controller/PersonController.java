@@ -17,16 +17,15 @@ import com.spring.users.service.PersonService;
 import com.spring.users.service.UsersService;
 
 @Controller
-@RequestMapping(value = "/person")
 public class PersonController {
 
     @Autowired
     private PersonService personService;
-    
+
     @Autowired
     private UsersService usersService;
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/person/list", method = RequestMethod.GET)
     public ModelAndView list() {
         ModelAndView model = new ModelAndView("personList");
         List<Person> personList = personService.getAllPerson();
@@ -34,7 +33,7 @@ public class PersonController {
         return model;
     }
 
-    @RequestMapping(value = "/addPerson/", method = RequestMethod.GET)
+    @RequestMapping(value = "/person/addPerson/", method = RequestMethod.GET)
     public ModelAndView addPerson() {
         ModelAndView model = new ModelAndView("personList");
         Person person = new Person();
@@ -43,7 +42,7 @@ public class PersonController {
         return model;
     }
 
-    @RequestMapping(value = "/updatePerson/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/person/updatePerson/{id}", method = RequestMethod.GET)
     public ModelAndView updatePerson(@PathVariable Integer id) {
         ModelAndView model = new ModelAndView("personList");
         Person person = personService.getPersonById(id);
@@ -52,7 +51,7 @@ public class PersonController {
         return model;
     }
 
-    @RequestMapping(value = "/savePerson", method = RequestMethod.POST)
+    @RequestMapping(value = "/person/savePerson", method = RequestMethod.POST)
     public ModelAndView savePerson(@ModelAttribute("personForm") Person person) {
 
         try {
@@ -64,7 +63,7 @@ public class PersonController {
         return new ModelAndView("redirect:/person/list");
     }
 
-    @RequestMapping(value = "/deletePerson/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/person/deletePerson/{id}", method = RequestMethod.GET)
     public ModelAndView deletePerson(@PathVariable("id") Integer id) {
         try {
             personService.deletePerson(id);
@@ -74,21 +73,22 @@ public class PersonController {
         return new ModelAndView("redirect:/person/list");
     }
 
-    @RequestMapping("")
+    @RequestMapping("/person")
     public String setupForm(Map<String, Object> map) {
         Person person = new Person();
         map.put("person", person);
         map.put("personList", personService.getAllPerson());
-        
+
         Users users = new Users();
         map.put("users", users);
         map.put("usersList", usersService.getAllUsers());
-        
+
         return "person";
     }
 
     @RequestMapping(value = "/person.form", method = RequestMethod.POST)
-    public String doActions(@ModelAttribute Person person, BindingResult result, @RequestParam String action, Map<String, Object> map) {
+    public String doActions(@ModelAttribute Person person, BindingResult result,
+            @RequestParam String action, Map<String, Object> map) {
 
         Person personResult = new Person();
         Person searchedPerson = new Person();
