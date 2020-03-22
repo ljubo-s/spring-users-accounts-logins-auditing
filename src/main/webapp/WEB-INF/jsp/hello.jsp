@@ -15,7 +15,7 @@
 							
 						</td>
 						<td align="center" style="font-size: 1.3em; font-weight: bold;">
-							Ulogovani ste kao: &nbsp;&nbsp; <c:out value="${pageContext.request.remoteUser}" />
+							You are logged as : &nbsp;&nbsp; <c:out value="${pageContext.request.remoteUser}" />
 						</td>
 					</tr>
 				</table>

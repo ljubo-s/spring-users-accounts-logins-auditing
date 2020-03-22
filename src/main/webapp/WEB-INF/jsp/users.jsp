@@ -5,6 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <%@ include file="includes.jsp"%>
 <title>Users</title>
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" /> 
+<script type="text/javascript" src="DataTables/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="DataTables/datatables.min.js"></script>
 <script>
 	function val() {
 		personId = document.getElementById("select_person_id").value;
@@ -17,7 +20,7 @@
 		<tr>
 			<td align="center">
 				<h2>
-					Users &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="index"> * </a>
+					Users &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/auditing/index"> * </a>
 				</h2>
 
 				<form:form action="users.form" method="post" modelAttribute="users">
@@ -26,7 +29,7 @@
 						<tr>
 							<td>Id</td>
 							<td>
-								<form:input path="id" />
+								<form:input path="id"></form:input>
 							</td>
 						</tr>
 						<tr>
@@ -44,7 +47,7 @@
 						<tr>
 							<td>Date of insert</td>
 							<td>
-								<form:input path="dateofinsert"></form:input>
+								<form:input path="dateofinsert" placeholder="dd-MM-yyyy HH:mm:ss"></form:input>
 							</td>
 						</tr>
 						<tr>
@@ -81,10 +84,10 @@
 					</table>
 				</form:form>
 
-				<table style="border: 1px solid; min-width: 80%; max-width: 100%; text-align: center" id="table_id">
+				<table class="display" style="width:100%; border: 1px solid; table-layout: fixed; word-wrap: break-word;" id="users_table" class="display compact nowrap;">
 					<thead style="background: #d3dce3">
 						<tr>
-							<th>rb</th>
+							<th>on</th>
 							<th>Id</th>
 							<th>Username</th>
 							<th>Password</th>
@@ -98,13 +101,13 @@
 						<c:forEach items="${usersList}" var="users" varStatus="i">
 							<tr align="center">
 								<td>
-									<c:out value="${i.index + 1 }" />
+									<c:out value="${i.index + 1}" />
 								</td>
 								<td>${users.id}</td>
 								<td>${users.username}</td>
 								<td>${users.password}</td>
 								<td>${users.status}</td>
-								<td>${users.dateofinsert}</td>
+								<td><fmt:formatDate value="${users.dateofinsert}" type="date" pattern="dd-MM-yyyy hh:mm:ss" /></td>
 								<td>${users.person.id}</td>
 								<td>
 								<c:forEach var="usersRoles" items="${users.usersRoles}">
@@ -116,7 +119,12 @@
 					</tbody>
 				</table>
 			</td>
-		</tr>
+		</tr>	
 	</table>
+	<script>
+		$(document).ready(function() {
+			$('#users_table').dataTable({});
+		});
+	</script>
 </body>
 </html>

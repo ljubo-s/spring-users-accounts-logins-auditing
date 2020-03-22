@@ -5,6 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <%@ include file="includes.jsp"%>
 <title>Roles</title>
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" /> 
+<script type="text/javascript" src="DataTables/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="DataTables/datatables.min.js"></script>
 </head>
 <body>
 	<table width="100%" align="center">
@@ -14,7 +17,7 @@
 					Roles &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/auditing/index"> * </a>
 				</h2>
 
-				<form:form action="/roles/roles.form" method="post" modelAttribute="roles">
+				<form:form action="roles.form" method="post" modelAttribute="roles">
 
 					<table>
 						<tr>
@@ -54,14 +57,14 @@
 					</table>
 				</form:form>
 
-				<table style="border: 1px solid; min-width: 80%; max-width: 100%; text-align: center" id="table_id">
+				<table class="display" style="width:100%; border: 1px solid; table-layout: fixed; word-wrap: break-word;" id="roles_table" class="display compact nowrap;">
 					<thead style="background: #d3dce3">
 						<tr>
-							<th>rb</th>
+							<th>on</th>
 							<th>Id</th>
 							<th>Title</th>
 							<th>Description</th>
-							<th>Stauts</th>
+							<th>Status</th>
 						</tr>
 					</thead>
 					<tbody style="background: #ccc">
@@ -79,7 +82,12 @@
 					</tbody>
 				</table>
 			</td>
-		</tr>
+		</tr>		
 	</table>
+		<script>
+		$(document).ready(function() {
+			$('#roles_table').dataTable({});
+		});
+	</script>
 </body>
 </html>

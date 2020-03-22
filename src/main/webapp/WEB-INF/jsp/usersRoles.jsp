@@ -5,6 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <%@ include file="includes.jsp"%>
 <title>Users and Role</title>
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" /> 
+<script type="text/javascript" src="DataTables/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="DataTables/datatables.min.js"></script>
 <script>
 	function val() {
 		d = document.getElementById("select_users_id").value;
@@ -20,10 +23,10 @@
 		<tr>
 			<td align="center">
 				<h2>
-					Users x Role &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/"> * </a>
+					Users x Role &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/auditing/index"> * </a>
 				</h2>
 
-				<form:form action="/usersRoles/usersRoles.form" method="post" modelAttribute="usersRoles">
+				<form:form action="usersRoles.form" method="post" modelAttribute="usersRoles">
 
 					<table>
 						<tr>
@@ -87,10 +90,10 @@
 					</table>
 				</form:form>
 
-				<table style="border: 1px solid; min-width: 80%; max-width: 100%; text-align: center" id="table_id">
+				<table class="display" style="width:100%; border: 1px solid; table-layout: fixed; word-wrap: break-word;" id="users_roles_table" class="display compact nowrap;">
 					<thead style="background: #d3dce3">
 						<tr>
-							<th>rb</th>
+							<th>on</th>
 							<th>Id</th>
 							<th>Description</th>
 							<th>Status</th>
@@ -102,13 +105,13 @@
 						<c:forEach items="${usersRolesList}" var="usersRole" varStatus="i">
 							<tr align="center">
 								<td>
-									<c:out value="${i.index + 1 }" />
+									<c:out value="${i.index + 1}" />
 								</td>
-								<td>${usersRoles.id}</td>
-								<td>${usersRoles.description}</td>
-								<td>${usersRoles.status}</td>
-								<td>${usersRoles.users.id}</td>
-								<td>${usersRoles.roles.id}</td>
+								<td>${usersRole.id}</td>
+								<td>${usersRole.description}</td>
+								<td>${usersRole.status}</td>
+								<td>${usersRole.users.id}</td>
+								<td>${usersRole.roles.id}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -116,5 +119,10 @@
 			</td>
 		</tr>
 	</table>
+		<script>
+		$(document).ready(function() {
+			$('#users_roles_table').dataTable({});
+		});
+	</script>
 </body>
 </html>

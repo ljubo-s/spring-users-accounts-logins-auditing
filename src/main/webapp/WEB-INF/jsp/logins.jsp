@@ -5,6 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <%@ include file="includes.jsp"%>
 <title>Logins</title>
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" /> 
+<script type="text/javascript" src="DataTables/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="DataTables/datatables.min.js"></script>
 <script>
 	function val() {
 		d = document.getElementById("select_users_id").value;
@@ -17,20 +20,20 @@
 		<tr>
 			<td align="center">
 				<h2>
-					Logins &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/"> * </a>
+					Logins &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/auditing/index"> * </a>
 				</h2>
 
-				<form:form action="/logins/logins.form" method="post" modelAttribute="logins">
+				<form:form action="logins.form" method="post" modelAttribute="logins">
 
 					<table>
 						<tr>
 							<td>Id</td>
 							<td>
-								<form:input path="id" id="paramid" value="${param.id}" />
+								<form:input path="id"></form:input>
 							</td>
 						</tr>
 						<tr>
-							<td>Name</td>
+							<td>Browser</td>
 							<td>
 								<form:input path="browser"></form:input>
 							</td>
@@ -38,7 +41,7 @@
 						<tr>
 							<td>Date</td>
 							<td>
-								<form:input path="dateofinsert"></form:input>
+								<form:input path="dateofinsert" placeholder="dd-MM-yyyy HH:mm:ss"></form:input>
 							</td>
 						</tr>
 						<tr>
@@ -53,14 +56,6 @@
 								<form:input path="success"></form:input>
 							</td>
 						</tr>
-			<!--  			
-						<tr>
-							<td>User Id</td>
-							<td>
-								<form:input path="users.id"></form:input>
-							</td>
-						</tr>
-			-->		
 						<tr>
 							<td>User Id</td>
 							<td>
@@ -90,10 +85,10 @@
 					</table>
 				</form:form>
 
-				<table style="border: 1px solid; min-width: 80%; max-width: 100%; text-align: center" id="table_id">
+				<table class="display" style="width:100%; border: 1px solid; table-layout: fixed; word-wrap: break-word;" id="logins_table" class="display compact nowrap;">
 					<thead style="background: #d3dce3">
 						<tr>
-							<th>rb</th>
+							<th>on</th>
 							<th>Id</th>
 							<th>Browser</th>
 							<th>Date</th>
@@ -106,11 +101,11 @@
 						<c:forEach items="${loginsList}" var="logins" varStatus="i">
 							<tr align="center">
 								<td>
-									<c:out value="${i.index + 1 }" />
+									<c:out value="${i.index + 1}" />
 								</td>
 								<td>${logins.id}</td>
 								<td>${logins.browser}</td>
-								<td>${logins.dateofinsert}</td>
+						 		<td><fmt:formatDate value="${logins.dateofinsert}" type="date" pattern="dd-MM-yyyy hh:mm:ss" /></td>
 								<td>${logins.ip}</td>
 								<td>${logins.success}</td>
 								<td>${logins.users.id}</td>
@@ -121,5 +116,10 @@
 			</td>
 		</tr>
 	</table>
+	<script>
+		$(document).ready(function() {
+			$('#logins_table').dataTable({});
+		});
+	</script>	
 </body>
 </html>

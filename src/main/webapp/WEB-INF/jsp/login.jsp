@@ -10,12 +10,7 @@
 		<table>
 			<tr>
 				<td align="center">
-					<h1>Auditing login</h1>
-				</td>
-			</tr>
-			<tr>
-				<td align="center">
-					
+					<h1>Login</h1>
 				</td>
 			</tr>
 			<tr>
@@ -57,7 +52,6 @@
 									</div>
 								<td>
 							</tr>
-
 						</table>
 					</form>
 

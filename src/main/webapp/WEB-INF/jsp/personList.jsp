@@ -6,13 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Users x Role List</title>
-<script src="../../webjars/jquery/3.4.1/jquery.min.js"></script>
-<script src="../../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<link href="../../webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<script src="../webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link href="../webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
 	<div class="container">
-		<h2>Person List &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/"> * </a></h2>
+		<h2>Person List &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/auditing/index"> * </a></h2>
 		<table class="table table-striped">
 			<tr>
 				<th scope="row">#ID</th>

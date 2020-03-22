@@ -33,18 +33,18 @@
 						<td>${roles.status}</td>
 						<td>
 							<spring:url value="/roles/updateRoles/${roles.id}" var="updateURL" />
-							<a class="btn btn-primary" href="${updateURL}" roles="button">Update</a>
+							<a class="btn btn-primary" href="${updateURL}" role="button">Update</a>
 						</td>
 						<td>
 							<spring:url value="/roles/deleteRoles/${roles.id}" var="deleteURL" />
-							<a class="btn btn-primary" href="${deleteURL}" roles="button">Delete</a>
+							<a class="btn btn-primary" href="${deleteURL}" role="button">Delete</a>
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<spring:url value="/roles/addRoles/" var="addURL" />
-		<a class="btn btn-primary" href="${addURL}" roles="button">Add New Roles</a>
+		<a class="btn btn-primary" href="${addURL}" role="button">Add New Roles</a>
 	</div>
 </body>
 </html>

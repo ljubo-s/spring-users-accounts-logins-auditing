@@ -5,22 +5,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <%@ include file="includes.jsp"%>
 <title>Persons</title>
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" /> 
+<script type="text/javascript" src="DataTables/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="DataTables/datatables.min.js"></script>
 </head>
 <body>
 	<table width="100%" align="center">
 		<tr>
 			<td align="center">
 				<h2>
-					Persons &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/"> * </a>
+					Persons &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/auditing/index"> * </a>
 				</h2>
 
-				<form:form action="/person/person.form" method="post" modelAttribute="person">
+				<form:form action="person.form" method="post" modelAttribute="person">
 
 					<table>
 						<tr>
 							<td>Id</td>
 							<td>
-								<form:input path="id"/>
+								<form:input path="id"></form:input> 
 							</td>
 						</tr>
 						<tr>
@@ -38,7 +41,7 @@
 						<tr>
 							<td>Date of insert</td>
 							<td>
-								<form:input path="dateofinsert"></form:input>
+								<form:input path="dateofinsert" placeholder="dd-MM-yyyy HH:mm:ss"></form:input>
 							</td>
 						</tr>
 						<tr>
@@ -60,10 +63,10 @@
 					</table>
 				</form:form>
 
-				<table style="border: 1px solid; min-width: 80%; max-width: 100%; text-align: center" id="table_id">
+				<table class="display" style="width:100%; border: 1px solid; table-layout: fixed; word-wrap: break-word;" id="person_table" class="display compact nowrap;">
 					<thead style="background: #d3dce3">
 						<tr>
-							<th>rb</th>
+							<th>on</th>
 							<th>Id</th>
 							<th>Name</th>
 							<th>Surname</th>
@@ -81,7 +84,7 @@
 								<td>${person.name}</td>
 								<td>${person.surname}</td>
 								<td>${person.status}</td>
-								<td>${person.dateofinsert}</td>
+								<td><fmt:formatDate value="${person.dateofinsert}" type="date" pattern="dd-MM-yyyy hh:mm:ss" /></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -89,5 +92,10 @@
 			</td>
 		</tr>
 	</table>
+	<script>
+		$(document).ready(function() {
+			$('#person_table').dataTable({});
+		});
+	</script>	
 </body>
 </html>
